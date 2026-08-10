@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Scale } from "lucide-react";
 import Wordmark from "../components/Wordmark";
 import ConfidenceBadge from "../components/ConfidenceBadge";
 import ValidationBadge from "../components/ValidationBadge";
+import OptionAvatar from "../components/OptionAvatar";
 import ComparisonTable from "../components/ComparisonTable";
 import KeyAssumptions from "../components/KeyAssumptions";
 import WhatWouldChangeCallout from "../components/WhatWouldChangeCallout";
@@ -64,17 +65,20 @@ export default function ResultsPage() {
         </p>
 
         <section className="mt-3 rounded-xl border border-border bg-surface p-6 shadow-card sm:p-8">
-          <div className="flex flex-wrap items-center gap-3">
-            <h1 className="font-heading text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-              {rec.recommendedOption}
-            </h1>
-            <ConfidenceBadge confidence={rec.confidence} />
-            {nearTie && (
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-warning/25 bg-warning/10 px-3 py-1 text-sm font-semibold text-warning">
-                <Scale aria-hidden className="h-4 w-4" />
-                Closely matched
-              </span>
-            )}
+          <div className="flex flex-wrap items-center gap-4">
+            <OptionAvatar name={rec.recommendedOption} size="lg" />
+            <div className="flex flex-wrap items-center gap-3">
+              <h1 className="font-heading text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                {rec.recommendedOption}
+              </h1>
+              <ConfidenceBadge confidence={rec.confidence} />
+              {nearTie && (
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-warning/25 bg-warning/10 px-3 py-1 text-sm font-semibold text-warning">
+                  <Scale aria-hidden className="h-4 w-4" />
+                  Closely matched
+                </span>
+              )}
+            </div>
           </div>
           <p className="mt-4 text-base leading-relaxed text-foreground/90">
             {rec.explanation}

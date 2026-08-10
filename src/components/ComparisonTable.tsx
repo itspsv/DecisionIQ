@@ -2,6 +2,7 @@ import { Fragment, useMemo, useState } from "react";
 import { CircleHelp } from "lucide-react";
 import type { DecisionBrief } from "../lib/types";
 import { optionAverages } from "../lib/brief";
+import OptionAvatar from "./OptionAvatar";
 
 interface ExpandedCell {
   crit: number;
@@ -37,6 +38,7 @@ export default function ComparisonTable({ brief }: { brief: DecisionBrief }) {
                   className="border-l border-border/70 px-4 py-3 text-left align-bottom"
                 >
                   <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <OptionAvatar name={scoring.option} size="sm" />
                     <span
                       className={
                         isTop ? "font-semibold text-primary" : "font-medium"
