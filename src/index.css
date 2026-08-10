@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-heading: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Navy primary — single accent color for buttons and emphasis (per PRD) */
+  --color-primary: oklch(0.3462 0.0736 256.04);
+  --color-primary-hover: oklch(0.295 0.072 256);
+  --color-primary-soft: oklch(0.945 0.018 256);
+  --color-accent: oklch(0.596 0.1274 163.23);
+
+  --color-background: oklch(0.965 0.004 247);
+  --color-foreground: oklch(0.2733 0.0216 249.51);
+  --color-muted: oklch(0.525 0.02 252);
+  --color-card: oklch(0.975 0.003 247.86);
+  --color-surface: oklch(1 0 0);
+  --color-border: oklch(0.913 0.007 247);
+
+  /* Semantic status colors (High/Medium/Low, consistent/contradiction) */
+  --color-success: oklch(0.527 0.154 150.5);
+  --color-warning: oklch(0.554 0.135 66.44);
+  --color-danger: oklch(0.588 0.206 38.58);
+
+  --shadow-card: 0 1px 2px oklch(0.27 0.02 250 / 0.05),
+    0 10px 30px -14px oklch(0.27 0.02 250 / 0.18);
+}
+
+@layer base {
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: oklch(0.85 0.05 256 / 0.45);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-white transition-all duration-150 ease-out hover:bg-primary-hover active:scale-[0.97];
+  }
+}
